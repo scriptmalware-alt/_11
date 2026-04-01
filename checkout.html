@@ -103,8 +103,7 @@ const order = {
 document.getElementById("pkgName").innerText = order.package;
 document.getElementById("pkgPrice").innerText = "IDR " + order.amount.toLocaleString("id-ID");
 
-const DANA_NUMBER = "082151333668";
-const DANA_NAME = "A/N : JUNIOR";
+const DANA_NUMBER = "082277216363";
 
 const content = document.getElementById("contentArea");
 content.innerHTML = `
@@ -153,10 +152,6 @@ content.innerHTML = `
 
   <div class="fs-5 fw-bold text-info mb-2" id="danaNumber">
     ${DANA_NUMBER}
-  </div>
-
-  <div class="fs-5 fw-bold text-info mb-2">
-    ${DANA_NAME}
   </div>
 
   <button class="btn btn-sm btn-outline-info" onclick="copyDana()">
