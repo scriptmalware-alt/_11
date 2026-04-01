@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment Script Malware Premium</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(160deg,#020617,#0f172a,#020617);
+  color:#fff;
+}
+
+.pricing-card {
+  background:#020617;
+  border-radius:20px;
+  padding:20px;
+  transition:0.3s;
+  border:1px solid #1e293b;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  height:100%;
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.best {
+  border:2px solid #22c55e;
+  box-shadow:0 0 20px rgba(34,197,94,0.6);
+}
+
+.badge-best {
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#3b82f6;
+  color:#fff;
+  font-size:12px;
+  padding:6px 12px;
+  border-radius:10px;
+  font-weight:bold;
+  box-shadow:0 4px 10px rgba(59,130,246,0.5);
+}
+
+.title { font-size:18px; font-weight:bold; }
+.price { font-size:18px; font-weight:bold; color:#22c55e; }
+
+.btn-buy { 
+  border-radius:12px; 
+  font-weight:bold; 
+  margin-top:auto; 
+}
+
+.btn-best {
+  background:#22c55e;
+  border:none;
+}
+
+.btn-best:hover {
+  background:#16a34a;
+}
+
+/* 🔥 BOX TRUST */
+.info-box {
+  border:1px solid #1e293b;
+  box-shadow:0 0 15px rgba(34,197,94,0.2);
+}
+
+/* 🔥 USER COUNTER */
+.user-counter {
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:15px;
+  padding:10px 15px;
+  font-weight:bold;
+  font-size:16px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-bottom:15px;
+  color:#22c55e;
+}
+
+.btn-back {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 460px;
+  margin-top: 2rem;
+}
+
+.btn-back:hover {
+  background-color: #22c55e;
+  color: #020617;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5 d-flex flex-column align-items-center">
+
+  <div class="text-center mb-4">
+    <h3 class="fw-bold">List Harga</h3>
+    <h4 class="fw-bold">Script Malware</h4>
+
+    <!-- USER COUNTER -->
+    <div class="user-counter">
+      <i class="bi bi-people-fill"></i>
+      <span id="userCounter">486554</span> pengguna aktif
+    </div>
+
+    <div class="bg-dark bg-opacity-75 rounded-4 p-3 small fw-semibold text-light info-box mt-3">
+      <i class="bi bi-lightning-charge-fill text-warning"></i> Akses cepat setelah pembayaran <br>
+      <i class="bi bi-shield-check text-info"></i> Support aktif & sistem otomatis
+    </div>
+  </div>
+
+  <div class="row g-4 w-100">
+
+  <script>
+  const packages = [
+    {name:"100 GB", price:249000},
+    {name:"300 GB", price:499000},
+    {name:"500 GB", price:799000},
+    {name:"900 GB", price:1199000, best:true},
+    {name:"1200 GB", price:1499000},
+    {name:"1800 GB", price:1999000}
+  ];
+
+  packages.forEach(pkg => {
+    const isBest = pkg.best ? "best" : "";
+    const badge = pkg.best ? `<div class="badge-best">TERLARIS</div>` : "";
+    const btnClass = pkg.best ? "btn-best" : "btn-success";
+
+    document.write(`
+      <div class="col-6 col-md-4">
+        <div class="pricing-card text-center h-100 ${isBest}">
+          
+          ${badge}
+
+          <div>
+            <div class="title">${pkg.name}</div>
+            <div class="price my-2">Rp${pkg.price.toLocaleString("id-ID")}</div>
+          </div>
+
+          <a href="checkout.html?package=${encodeURIComponent(pkg.name)}&price=${pkg.price}" 
+             class="btn ${btnClass} w-100 btn-buy">
+            BELI
+          </a>
+
+        </div>
+      </div>
+    `);
+  });
+  </script>
+
+  </div>
+
+  <a href="index.html" class="btn btn-outline-light btn-back">
+    <i class="bi bi-arrow-left"></i> Back
+  </a>
+
+</div>
+
+<script>
+// USER COUNTER LAMBAT: naik 1 setiap 10 detik
+let counterEl = document.getElementById("userCounter");
+let userCount = parseInt(counterEl.innerText);
+
+function incrementCounter() {
+  userCount += 1;
+  counterEl.innerText = userCount.toLocaleString("id-ID");
+}
+
+// update setiap 10 detik
+setInterval(incrementCounter, 10000);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
